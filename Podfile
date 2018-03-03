@@ -13,6 +13,9 @@ target 'VampLife_iOSFinal' do
  pod 'Firebase/Auth'
  pod 'UberRides', '~> 0.9'
  pod 'Firebase/Database'
+ pod 'GooglePlaces'
+ pod 'GoogleMaps'
+ pod 'Mapbox-iOS-SDK', '~> 3.7'
   
  
 

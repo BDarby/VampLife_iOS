@@ -33,10 +33,8 @@
 	<string>VampLife_iOSFinal</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>fbapi</string>
-		<string>fb-messenger-share-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -61,16 +59,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>UberClientID</key>
-    <string>MQAH74dGS4c_XYD5x-fSrFGOZG7Ox8z2</string>
-    <key>UberDisplayName</key>
-    <string>VampLife_iOSFinal</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>uber</string>
-        <string>uberauth</string>
-    </array>
-    
-    
+	<key>UberClientID</key>
+	<string>MQAH74dGS4c_XYD5x-fSrFGOZG7Ox8z2</string>
+	<key>UberDisplayName</key>
+	<string>VampLife_iOSFinal</string>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1Ijoibmljb2xlYm9vMjQyIiwiYSI6ImNqY2dseHZ5NzFvZm0yd256MXR0ZHBtZHkifQ.w7xz-kvWuoVGmaEQSJS0rw</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allows the user to see location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Allow</string>
 </dict>
 </plist>
