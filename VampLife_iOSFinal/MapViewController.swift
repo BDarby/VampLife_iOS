@@ -15,6 +15,8 @@ import Mapbox
 
 class MapViewController: UIViewController {
     
+    var clubs = [ClubClass]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +42,7 @@ class MapViewController: UIViewController {
                 do {
                     if let jsonObj = try JSONSerialization.jsonObject(with: validData, options: .mutableContainers) as? [String:Any]{
                         if let results = jsonObj["results"] as? [Any]{
-                            print(results)
+                            //print(results)
                         }
                         
                     }
@@ -60,7 +62,7 @@ class MapViewController: UIViewController {
 
         }
         
-
+            Parse(jsonObject: [])
 
     } //end of VIEW DID LOAD
     
@@ -71,17 +73,17 @@ class MapViewController: UIViewController {
         
         for res in json{
             guard let results = res as? [String:Any],
-                let geo = results["geometry"] as? String
-//                let loc = results["Locations"] as? [String:Any],
-//                let lat = loc ["lat"] as? String,
-//                let lng = loc ["lng"] as? String,
-//                let name = results["name"] as? String,
-//                let openHours = results["opening_hours"] as? [String:Any],
-//                let openNow = openHours["open_now"] as? Bool,
-//                let rate = results["rating"] as? Double,
-//                let address = results["vicinity"] as? String
+                  let geo = results["geometry"] as? String,
+                  let loc = results["Locations"] as? [String:Any],
+                  let lat = loc ["lat"] as? String,
+                  let lng = loc ["lng"] as? String,
+                let name = results["name"] as? String,
+                let openHours = results["opening_hours"] as? [String:Any],
+                let openNow = openHours["open_now"] as? Bool,
+                let rate = results["rating"] as? Double,
+                let address = results["vicinity"] as? String
             
-                else{
+                else {
                     continue
             }
         }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class clubClass {
+class ClubClass {
     
     var name: String
     var time: String

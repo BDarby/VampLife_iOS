@@ -17,6 +17,7 @@
 		0C487450203CF27400D419B1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48744F203CF27400D419B1 /* ProfileViewController.swift */; };
 		0C487452203DD2BC00D419B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C487451203DD2BC00D419B1 /* MapViewController.swift */; };
 		0C557BE4204A41F00045A3CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C557BE3204A41F00045A3CF /* GoogleService-Info.plist */; };
+		0C8CB948204DE7780056DBBD /* JsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB947204DE7780056DBBD /* JsonViewController.swift */; };
 		0CF0B3BF20376BBA006EDE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0B3BE20376BBA006EDE49 /* AppDelegate.swift */; };
 		0CF0B3C120376BBA006EDE49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0B3C020376BBA006EDE49 /* ViewController.swift */; };
 		0CF0B3C420376BBA006EDE49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CF0B3C220376BBA006EDE49 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		0C48744F203CF27400D419B1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0C487451203DD2BC00D419B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0C557BE3204A41F00045A3CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C8CB947204DE7780056DBBD /* JsonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonViewController.swift; sourceTree = "<group>"; };
 		0CF0B3BB20376BBA006EDE49 /* VampLife_iOSFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VampLife_iOSFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CF0B3BE20376BBA006EDE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CF0B3C020376BBA006EDE49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				0CF0B3D020376F8C006EDE49 /* Podfile */,
 				0C557BE3204A41F00045A3CF /* GoogleService-Info.plist */,
 				0C2DD53C20412B280079B083 /* ClubObjects.swift */,
+				0C8CB947204DE7780056DBBD /* JsonViewController.swift */,
 			);
 			path = VampLife_iOSFinal;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				0C48744C203A581500D419B1 /* AlreadyMember.swift in Sources */,
 				0C487450203CF27400D419B1 /* ProfileViewController.swift in Sources */,
 				0CF0B3C120376BBA006EDE49 /* ViewController.swift in Sources */,
+				0C8CB948204DE7780056DBBD /* JsonViewController.swift in Sources */,
 				0CF0B3BF20376BBA006EDE49 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
