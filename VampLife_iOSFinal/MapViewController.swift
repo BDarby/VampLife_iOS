@@ -15,79 +15,94 @@ import Mapbox
 
 class MapViewController: UIViewController {
     
-    var clubs = [ClubClass]()
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
        
-        let config = URLSessionConfiguration.default
+        let jsonString = URL(string:"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=28.5393771,-81.3816546&radius=500&type=night_club&key=AIzaSyAUukffqwB5tf4oS1puWq8HE1nOk4t_sGI")!
         
-        let session = URLSession(configuration: config)
-       
-        if let jsonString = URL(string:"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=28.5393771,-81.3816546&radius=500&type=night_club&key=AIzaSyAUukffqwB5tf4oS1puWq8HE1nOk4t_sGI"){
+        
+        let jsonPhoto = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CmRaAAAASSPcQ-PRcadh8JxvrTixhGr7Ktlk0tH2suzvbrT2iwHQOZHYPVtDWKzh-cbeVzfoqzUH7kD--AJ2a5cyF3JyBhevxyiu-kO3wJ6wpeCJLzk7NzSAZmqG88oROFzh3VKSEhBTvkvYyFCJqEgvpfd4BI3IGhQ2kIlbnwN7xeA4ZiRXxeu_o2C7Rw&key=AIzaSyAUukffqwB5tf4oS1puWq8HE1nOk4t_sGI"
+        
+        
+        let config = URLSession.shared
+        
+        let request = URLRequest(url: jsonString)
+        
+        
+        //print("test==================")
+        
+        let googleTask = config.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             
-            let googleTask = session.dataTask(with: jsonString, completionHandler: { (data, response, error) in
+            guard error == nil else{
+                return
+            }
+            
+            guard let data = data else{
+                return
+            }
+            do{
                 
-                if let error = error{
-                    print("it failed" + error.localizedDescription)
-                }
-                
-                guard let httpsResponse = response as? HTTPURLResponse,
-                httpsResponse.statusCode == 200,
-                let validData = data
-                    else{print("json failed"); return}
-                
-                do {
-                    if let jsonObj = try JSONSerialization.jsonObject(with: validData, options: .mutableContainers) as? [String:Any]{
-                        if let results = jsonObj["results"] as? [Any]{
-                            //print(results)
-                        }
+                if let jsonObj = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any]{
+                    
+                    if let resultsArray = jsonObj["results"] as? [Any] {
                         
+                        for apiResults in resultsArray{
+                            let valueCast = apiResults as? [String:Any]
+                            if let apiResultsOutPut = valueCast {
+                                
+                                if let apiOpenHours = apiResultsOutPut["opening_hours"] as? [String:Any]{
+                                    if let apiOpenNow = apiOpenHours["open_now"] as? Bool {
+                                        print(apiOpenNow)
+                                    }
+                                }
+                                if let apiPhoto =  apiResultsOutPut["photos"] as? [[String:Any]]{
+                                    for photo in apiPhoto {
+                                        if let apiPhotoRef = photo["photo_reference"] as? String{
+                                            print(apiPhotoRef)
+                                        }
+                                    }
+                                }
+                                
+                                if let apiRating = apiResultsOutPut["rating"] as? Double{
+                                    print(apiRating)
+                                }
+                                
+                                if let apiVicinity = apiResultsOutPut["vicinity"] as? String{
+                                    print(apiVicinity)
+                                }
+                                
+                                
+                                if let apiName = apiResultsOutPut["name"] as? String {
+                                    print(apiName)
+                                }
+                                if let apiGeometry = apiResultsOutPut["geometry"] as? [String: Any]{
+                                    //print(apiGeometry)
+                                    if let apiLocation = apiGeometry["location"] as? [String:Double]{
+                                        if let apiLat = apiLocation["lat"] {
+                                            print(apiLat)
+                                        }
+                                        if let apiLng = apiLocation["lng"] {
+                                            print(apiLng)
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                        print(resultsArray)
                     }
-                    // self.Parse(jsonObject: jsonObj as! [Any]) this is where I get my json data from google api.
-                    
-                   // let jsonObj = try JSONSerialization.jsonObject(with: validData, options: .mutableContainers)
-//                    let jsonObj = try JSONSerialization.jsonObject(with: validData, options: .mutableContainers) as? [Any]
-//
-//                    self.Parse(jsonObject: jsonObj as! [Any])
-                    
-                } catch {
-                    print(error.localizedDescription)
                 }
-                
-            })
-            googleTask.resume()
-
-        }
-        
-            Parse(jsonObject: [])
+            } catch let error {
+                print(error.localizedDescription)
+            }
+            
+        })
+        googleTask.resume()
 
     } //end of VIEW DID LOAD
     
-    func Parse(jsonObject: [Any]? ){
-        
-        guard let json = jsonObject
-            else { print("Parse Failed to Unwrap jsonObject."); return }
-        
-        for res in json{
-            guard let results = res as? [String:Any],
-                  let geo = results["geometry"] as? String,
-                  let loc = results["Locations"] as? [String:Any],
-                  let lat = loc ["lat"] as? String,
-                  let lng = loc ["lng"] as? String,
-                let name = results["name"] as? String,
-                let openHours = results["opening_hours"] as? [String:Any],
-                let openNow = openHours["open_now"] as? Bool,
-                let rate = results["rating"] as? Double,
-                let address = results["vicinity"] as? String
-            
-                else {
-                    continue
-            }
-        }
-    }
+   
     
 //    func displayToMap(){
 //        DispatchQueue.main.async {

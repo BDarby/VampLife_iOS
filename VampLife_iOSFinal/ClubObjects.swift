@@ -9,22 +9,22 @@
 import Foundation
 import UIKit
 
-class ClubClass {
+class ClubObjects {
     
     var name: String
-    var time: String
-    var price: String
+    var time: Bool
     var address: String
-    var lat: String
-    var long: String
+    var lat: Double
+    var long: Double
+    var photoReference: String
     
-    init(name: String, time: String, price: String, address: String, lat: String, long: String){
+    init(name: String, time: Bool, address: String, lat: Double, long: Double, photoReference: String ){
         self.name = name
         self.time = time
-        self.price = price
         self.address = address
         self.lat = lat
         self.long = long
+        self.photoReference = photoReference
     }
     
 }
