@@ -1,51 +1,41 @@
 //
-//  MapViewController.swift
+//  MapTableViewController.swift
 //  VampLife_iOSFinal
 //
-//  Created by Brittany Darby on 2/21/18.
+//  Created by Brittany Darby on 3/24/18.
 //  Copyright © 2018 Brittany Darby. All rights reserved.
 //
 
 import UIKit
-import Firebase
-import FirebaseDatabase
 import GooglePlaces
 import GoogleMaps
 import Mapbox
 
-class MapViewController: UIViewController,  MGLMapViewDelegate {
+class MapTableViewController: UITableViewController {
     
     
-    @IBOutlet var MapCard: UIView!
+    @IBOutlet var mNameLabel: UILabel!
     
-    @IBOutlet var mapView: MGLMapView!
+    @IBOutlet var mTimeLabel: UILabel!
     
+    @IBOutlet var mRatingLabel: UILabel!
     
-  
-    
-    var clubObjArray:[ClubObjects] = []
-    
+    @IBOutlet var mAddressLabel: UILabel!
     
     
+       var clubObjArray:[ClubObjects] = []
     
+    
+      let jsonString = URL(string:"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=28.5393771,-81.3816546&radius=500&type=night_club&key=AIzaSyAUukffqwB5tf4oS1puWq8HE1nOk4t_sGI")!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mapView.delegate = self
-        
-        mapView.setCenter(CLLocationCoordinate2D(latitude:28.5393771, longitude: -81.3816546 ), zoomLevel:9, animated: true)
-        
-       
-        let jsonString = URL(string:"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=28.5393771,-81.3816546&radius=500&type=night_club&key=AIzaSyAUukffqwB5tf4oS1puWq8HE1nOk4t_sGI")!
-        
-        
-        let jsonPhoto = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CmRaAAAASSPcQ-PRcadh8JxvrTixhGr7Ktlk0tH2suzvbrT2iwHQOZHYPVtDWKzh-cbeVzfoqzUH7kD--AJ2a5cyF3JyBhevxyiu-kO3wJ6wpeCJLzk7NzSAZmqG88oROFzh3VKSEhBTvkvYyFCJqEgvpfd4BI3IGhQ2kIlbnwN7xeA4ZiRXxeu_o2C7Rw&key=AIzaSyAUukffqwB5tf4oS1puWq8HE1nOk4t_sGI"
-        
-        
+
         let config = URLSession.shared
         
         let request = URLRequest(url: jsonString)
-   
+        
         
         let googleTask = config.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             
@@ -109,7 +99,7 @@ class MapViewController: UIViewController,  MGLMapViewDelegate {
                             }
                             
                         }
-                        self.displayToMap()
+                        
                     }
                 }
             } catch let error {
@@ -118,71 +108,114 @@ class MapViewController: UIViewController,  MGLMapViewDelegate {
             
         })
         googleTask.resume()
-       // mapView.addSubview(MapCard)
         
-    } //end of VIEW DID LOAD
+        
+        
+    
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
     
    
     
-    func displayToMap(){
-        DispatchQueue.main.async {
-            //this is where I would display markers to the map...somehow.!
-            let xibViews = Bundle.main.loadNibNamed("MapCard", owner: self, options: nil)
+   
     
-            
-            var mapCard = xibViews![0] as? MapCard
-                mapCard?.frame
-           
-//            NSLayoutConstraint.activate([
-//                mapCard.heightAnchor.constraint(equalTo: correctLayoutGuide.heightAnchor, multiplier: 0.5)
-//                mapCard.bottomAnchor.constraint(equalTo: correctLayoutGuide.bottomAnchor, constant: -20),
-//                mapCard.trailingAnchor.constraint(equalTo: correctLayoutGuide.trailingAnchor, constant: 20)
-//                ])
-            
-            for clubObject in self.clubObjArray{
-                let annotation = MGLPointAnnotation()
-                    annotation.coordinate = CLLocationCoordinate2D(latitude: clubObject.lat, longitude: clubObject.long)
-                    annotation.title = clubObject.name
-                    annotation.subtitle = clubObject.address
-        
-                    mapCard?.clubName.text = clubObject.name
-                    mapCard?.clubImage.image = UIImage(named: clubObject.photoReference)
-                    mapCard?.addressLabel.text = clubObject.address
-                    mapCard?.hoursLabel.text = String(clubObject.time)
-                    mapCard?.ratingLabel.text = String(clubObject.ratings)
-
-                self.mapView.addAnnotation(annotation)
-
-                //self.MapCard.addSubview(self.MapCard)
-                self.view.addSubview(mapCard!)
-            }
-        }
-    }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
- 
-    func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
-  
-        
 
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         
-        return nil
+        return 1
     }
-    
-    
-    
-    func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        //return 1
+        return clubObjArray.count
+        
+    }
+
+   
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MapTableViewCell else {
+            
+            return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            
+        }
         
        
+      let currentClub = clubObjArray[indexPath.row]
+            
+            cell.mName.text = currentClub.name
+            cell.mRatings.text = String(currentClub.ratings)
+            cell.mAddress.text = currentClub.address
+            cell.mHours.text = String(currentClub.time)
+            
+        
+       
+        
+        
+
+        // Configure the cell...
+
+        return cell
+    }
+  
+
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
         return true
     }
-    
+    */
+
+    /*
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }    
+    }
+    */
+
+    /*
+    // Override to support rearranging the table view.
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+
+    }
+    */
+
+    /*
+    // Override to support conditional rearranging of the table view.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the item to be re-orderable.
+        return true
+    }
+    */
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
-
-
-

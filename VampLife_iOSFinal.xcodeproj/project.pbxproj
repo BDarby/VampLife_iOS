@@ -17,7 +17,12 @@
 		0C487450203CF27400D419B1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C48744F203CF27400D419B1 /* ProfileViewController.swift */; };
 		0C487452203DD2BC00D419B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C487451203DD2BC00D419B1 /* MapViewController.swift */; };
 		0C557BE4204A41F00045A3CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C557BE3204A41F00045A3CF /* GoogleService-Info.plist */; };
-		0C8CB948204DE7780056DBBD /* JsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB947204DE7780056DBBD /* JsonViewController.swift */; };
+		0C8CB973205041A30056DBBD /* MapCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8CB972205041A30056DBBD /* MapCard.xib */; };
+		0C8CB97520506A030056DBBD /* MapCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB97420506A030056DBBD /* MapCard.swift */; };
+		0C8CB97720506DCA0056DBBD /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB97620506DCA0056DBBD /* Favorites.swift */; };
+		0C8CB979205070020056DBBD /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8CB978205070020056DBBD /* FavoriteTableViewCell.swift */; };
+		0C90293F2066122200C294B2 /* MapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90293E2066122200C294B2 /* MapTableViewController.swift */; };
+		0C902941206616EE00C294B2 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C902940206616EE00C294B2 /* MapTableViewCell.swift */; };
 		0CF0B3BF20376BBA006EDE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0B3BE20376BBA006EDE49 /* AppDelegate.swift */; };
 		0CF0B3C120376BBA006EDE49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF0B3C020376BBA006EDE49 /* ViewController.swift */; };
 		0CF0B3C420376BBA006EDE49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CF0B3C220376BBA006EDE49 /* Main.storyboard */; };
@@ -40,7 +45,12 @@
 		0C48744F203CF27400D419B1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0C487451203DD2BC00D419B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0C557BE3204A41F00045A3CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0C8CB947204DE7780056DBBD /* JsonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonViewController.swift; sourceTree = "<group>"; };
+		0C8CB972205041A30056DBBD /* MapCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCard.xib; sourceTree = "<group>"; };
+		0C8CB97420506A030056DBBD /* MapCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCard.swift; sourceTree = "<group>"; };
+		0C8CB97620506DCA0056DBBD /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		0C8CB978205070020056DBBD /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		0C90293E2066122200C294B2 /* MapTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewController.swift; sourceTree = "<group>"; };
+		0C902940206616EE00C294B2 /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		0CF0B3BB20376BBA006EDE49 /* VampLife_iOSFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VampLife_iOSFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CF0B3BE20376BBA006EDE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CF0B3C020376BBA006EDE49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,16 +109,21 @@
 				0CF0B3C020376BBA006EDE49 /* ViewController.swift */,
 				0C48744B203A581500D419B1 /* AlreadyMember.swift */,
 				0C487451203DD2BC00D419B1 /* MapViewController.swift */,
+				0C8CB972205041A30056DBBD /* MapCard.xib */,
+				0C8CB97420506A030056DBBD /* MapCard.swift */,
 				0C48744D203CE6CD00D419B1 /* UberViewController.swift */,
+				0C8CB97620506DCA0056DBBD /* Favorites.swift */,
 				0C48744F203CF27400D419B1 /* ProfileViewController.swift */,
+				0C2DD53C20412B280079B083 /* ClubObjects.swift */,
+				0C8CB978205070020056DBBD /* FavoriteTableViewCell.swift */,
 				0CF0B3C220376BBA006EDE49 /* Main.storyboard */,
 				0CF0B3C520376BBA006EDE49 /* Assets.xcassets */,
 				0CF0B3C720376BBA006EDE49 /* LaunchScreen.storyboard */,
 				0CF0B3CA20376BBA006EDE49 /* Info.plist */,
 				0CF0B3D020376F8C006EDE49 /* Podfile */,
 				0C557BE3204A41F00045A3CF /* GoogleService-Info.plist */,
-				0C2DD53C20412B280079B083 /* ClubObjects.swift */,
-				0C8CB947204DE7780056DBBD /* JsonViewController.swift */,
+				0C90293E2066122200C294B2 /* MapTableViewController.swift */,
+				0C902940206616EE00C294B2 /* MapTableViewCell.swift */,
 			);
 			path = VampLife_iOSFinal;
 			sourceTree = "<group>";
@@ -194,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C8CB973205041A30056DBBD /* MapCard.xib in Resources */,
 				0C557BE4204A41F00045A3CF /* GoogleService-Info.plist in Resources */,
 				0CF0B3C920376BBA006EDE49 /* LaunchScreen.storyboard in Resources */,
 				0CF0B3C620376BBA006EDE49 /* Assets.xcassets in Resources */,
@@ -288,14 +304,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C8CB97720506DCA0056DBBD /* Favorites.swift in Sources */,
 				0C48744E203CE6CD00D419B1 /* UberViewController.swift in Sources */,
+				0C902941206616EE00C294B2 /* MapTableViewCell.swift in Sources */,
 				0C2DD53D20412B280079B083 /* ClubObjects.swift in Sources */,
 				0C487452203DD2BC00D419B1 /* MapViewController.swift in Sources */,
 				0C48744C203A581500D419B1 /* AlreadyMember.swift in Sources */,
 				0C487450203CF27400D419B1 /* ProfileViewController.swift in Sources */,
 				0CF0B3C120376BBA006EDE49 /* ViewController.swift in Sources */,
-				0C8CB948204DE7780056DBBD /* JsonViewController.swift in Sources */,
+				0C8CB97520506A030056DBBD /* MapCard.swift in Sources */,
+				0C90293F2066122200C294B2 /* MapTableViewController.swift in Sources */,
 				0CF0B3BF20376BBA006EDE49 /* AppDelegate.swift in Sources */,
+				0C8CB979205070020056DBBD /* FavoriteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
