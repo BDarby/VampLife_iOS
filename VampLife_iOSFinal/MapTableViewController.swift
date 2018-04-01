@@ -24,6 +24,7 @@ class MapTableViewController: UITableViewController {
     
     
        var clubObjArray:[ClubObjects] = []
+    var sendText = ""
     
     
       let jsonString = URL(string:"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=28.5393771,-81.3816546&radius=500&type=night_club&key=AIzaSyAUukffqwB5tf4oS1puWq8HE1nOk4t_sGI")!
@@ -143,79 +144,46 @@ class MapTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         //return 1
         return clubObjArray.count
-        
     }
 
-   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MapTableViewCell else {
-            
             return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            
         }
-        
-       
       let currentClub = clubObjArray[indexPath.row]
-            
             cell.mName.text = currentClub.name
             cell.mRatings.text = String(currentClub.ratings)
             cell.mAddress.text = currentClub.address
             cell.mHours.text = String(currentClub.time)
-            
-        
-       
-        
-        
-
-        // Configure the cell...
-
         return cell
     }
   
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let DVC = storyBoard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
+//        self.navigationController?.pushViewController(DVC, animated: true)
+//        DVC.getName = clubObjArray[indexPath.row] as? String
+//        DVC.getAddress = clubObjArray[indexPath.row] as? String
+//        //sendText = String(describing: clubObjArray[indexPath.row])
+//        self.performSegue(withIdentifier: "segue", sender: nil)
+//
+    
+    performSegue(withIdentifier: "segue", sender: self)
+   }
+    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let indexPath = tableView.indexPathForSelectedRow{
+            let snds = clubObjArray[indexPath.row]
+            if let destination = segue.destination as? DetailsViewController{
+                destination.getName = snds.name
+                destination.getAddress = snds.address
+            }
+        }
     }
-    */
+ 
 
 }

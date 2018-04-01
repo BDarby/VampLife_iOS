@@ -18,6 +18,18 @@ class MapTableViewCell: UITableViewCell {
     
     @IBOutlet var mHours: UILabel!
     
+    
+    
+    @IBAction func favButton(_ sender: Any) {
+        
+        
+       // var indexPath : IndexPath = Favorites
+        
+        
+    }
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

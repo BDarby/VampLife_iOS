@@ -11,7 +11,9 @@ import UIKit
 class Favorites: UITableViewController {
     
     
-  
+    @IBOutlet var favClubName: UILabel!
+    
+    @IBOutlet var favAddress: UILabel!
     
     
     
